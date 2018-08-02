@@ -1,0 +1,24 @@
+{% extends "orders/base.html" %}
+<title>{% block title %}
+Pinocchio's Pizza
+{% endblock %}</title>
+
+{% block body %}
+<div class="jumbotron">
+<h1>Welcome to Pinocchio's Pizza's and Subs </h1>
+<p>74 Winthrop Street <br>
+Harvard Square<br>
+617-876-4897<br></p>
+
+<h3> Please Login :) </h3>
+</div>
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <input name="username" type="text"/>
+    <input name="password" type="password" />
+    <input type="submit" value="Login"/>
+</form>
+
+
+<a href="{% url 'newuser' %}">New User? Click here</a>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "orders/base.html" %}
+
+
+{% block body %}
+<h1>CheckOut</h1>
+ <ul>
+        <li>Currently logged in as: {{ user.username }}</li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+
+    </ul>
+<h3>{{cart|length }} items in cart</h3>
+<div class="list-group">
+    {% for i in cart %}
+
+     <form id = "{{i.id}}" action="/cartItemDelete" method="post">{% csrf_token %}
+         <div>
+             {{ i.cartItem.price }}
+             {{ i.cartItem.itemId.displayName }}
+         </div>
+         <input type="hidden" value="{{ i.id }}" name="cartItemId">
+        <button id="removeCartItem{{i.id}}" type="submit">Remove</button>
+    </form>
+    {% endfor %}
+
+<h3>Your total is {{total}}</h3>
+</div>
+
+<a href="{% url 'index' %}">Back to Menu</a>
+{% endblock %}

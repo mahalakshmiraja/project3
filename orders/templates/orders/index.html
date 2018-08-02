@@ -1,0 +1,152 @@
+{% extends "orders/base.html" %}
+
+{% block title %}
+    Pinocchio's
+{% endblock %}
+
+
+{% block body %}
+    <div class = "jumbotron">
+    <h1> Pinocchio's Pizza </h1>
+
+    <h3>Hello, {{user.username }}</h3>
+    <ul>
+        <li>Currently logged in as: {{ user.username }}</li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+
+    </ul>
+    </div>
+
+   <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-8" style="background-color:#d9d9d9;">
+
+                <h1>Menu</h1>
+                {% for x in itemGroup %}
+                {% csrf_token %}
+
+                   {% if x.id == 1 %}
+                    <h5>Regular Pizza</h5>
+                    <div class="list-group">
+                        {% for i in cost %}
+                            {% if i.itemId.itemGroupId.id == 1 %}
+                            <form id = "{{ i.id }}" action="/cartItem" method="post">{% csrf_token %}
+                                <input type="hidden" value="{{ i.id }}" name="itemPriceId">
+                                <a id="mySelect"value="{{ i.id }}" name="priceTable" href="#" class="list-group-item list-group-item-action list-group-item-dark" onclick="document.forms[{{ i.id }}].submit();">{{ i.itemId.displayName}} {{ i.size }} {{ i.price }}</a>
+                            </form>
+
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                   {% endif %}
+
+                {% if x.id == 2 %}
+                <h5>Sicilian Pizza</h5>
+                <div class="list-group">
+                        {% for i in cost %}
+                            {% if i.itemId.itemGroupId.id == 2 %}
+                            <form id = "{{ i.id }}" action="/cartItem" method="post">{% csrf_token %}
+                                <input type="hidden" value="{{ i.id }}" name="itemPriceId">
+                                <a id="mySelect"value="{{ i.id }}" name="priceTable" href="#" class="list-group-item list-group-item-action list-group-item-dark" onclick="document.forms[{{ i.id }}].submit();">{{ i.itemId.displayName}} {{ i.size }} {{ i.price }}</a>
+                            </form>
+
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if x.id == 3 %}
+                <h5>Subs</h5>
+                <div class="list-group">
+                        {% for i in cost %}
+                            {% if i.itemId.itemGroupId.id == 3 %}
+                            <form id = "{{ i.id }}" action="/cartItem" method="post">{% csrf_token %}
+                                <input type="hidden" value="{{ i.id }}" name="itemPriceId">
+                                <a id="mySelect"value="{{ i.id }}" name="priceTable" href="#" class="list-group-item list-group-item-action list-group-item-dark" onclick="document.forms[{{ i.id }}].submit();">{{ i.itemId.displayName}} {{ i.size }} {{ i.price }}</a>
+                            </form>
+
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+
+                {% if x.id == 4 %}
+                <h5>Salads</h5>
+               <div class="list-group">
+                        {% for i in cost %}
+                            {% if i.itemId.itemGroupId.id == 4 %}
+                            <form id = "{{ i.id }}" action="/cartItem" method="post">{% csrf_token %}
+                                <input type="hidden" value="{{ i.id }}" name="itemPriceId">
+                                <a id="mySelect"value="{{ i.id }}" name="priceTable" href="#" class="list-group-item list-group-item-action list-group-item-dark" onclick="document.forms[{{ i.id }}].submit();">{{ i.itemId.displayName}} {{ i.size }} {{ i.price }}</a>
+                            </form>
+
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if x.id == 5 %}
+                    <h5>Pasta</h5>
+                    <div class="list-group">
+                        {% for i in cost %}
+                            {% if i.itemId.itemGroupId.id == 5 %}
+                            <form id = "{{ i.id }}" action="/cartItem" method="post">{% csrf_token %}
+                                <input type="hidden" value="{{ i.id }}" name="itemPriceId">
+                                <a id="mySelect"value="{{ i.id }}" name="priceTable" href="#" class="list-group-item list-group-item-action list-group-item-dark" onclick="document.forms[{{ i.id }}].submit();">{{ i.itemId.displayName}} {{ i.size }} {{ i.price }}</a>
+                            </form>
+
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                   {% endif %}
+
+                   {% if x.id == 6 %}
+                    <h5>Dinner Platter</h5>
+                    <div class="list-group">
+                        {% for i in cost %}
+                            {% if i.itemId.itemGroupId.id == 6 %}
+                            <form id = "{{ i.id }}" action="/cartItem" method="post">{% csrf_token %}
+                                <input type="hidden" value="{{ i.id }}" name="itemPriceId">
+                                <a id="mySelect"value="{{ i.id }}" name="priceTable" href="#" class="list-group-item list-group-item-action list-group-item-dark" onclick="document.forms[{{ i.id }}].submit();">{{ i.itemId.displayName}} {{ i.size }} {{ i.price }}</a>
+                            </form>
+
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                   {% endif %}
+
+                    {% if x.id == 7 %}
+                    <h5>Toppings</h5>
+                    <div class="list-group">
+                        {% for i in cost %}
+                            {% if i.itemId.itemGroupId.id == 7 %}
+                            <form id = "{{ i.id }}" action="/cartItem" method="post">{% csrf_token %}
+                                <input type="hidden" value="{{ i.id }}" name="itemPriceId">
+                                <a id="mySelect"value="{{ i.id }}" name="priceTable" href="#" class="list-group-item list-group-item-action list-group-item-dark" onclick="document.forms[{{ i.id }}].submit();">{{ i.itemId.displayName}} {{ i.size }} {{ i.price }}</a>
+                            </form>
+
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                   {% endif %}
+                {% endfor %}
+
+                </div>
+
+            <div class="col-sm-4" style="background-color:#d9d9d9;">
+                <h5>Add to Cart</h5>
+                <h3>{{cart|length }} items in cart</h3>
+                <form id = "myOrder" action="/orderItem" method="post">{% csrf_token %}
+                        <button id="myOrderButton" type="submit">Checkout </button>
+                </form>
+                <p>My Orders</p>
+                <div>
+                    {% for i in cart %}
+                        {{ i.cartItem.price }}
+                        {{ i.cartItem.itemId.displayName }}
+                    {% endfor %}
+                </div>
+        </div>
+    </div>
+{% endblock %}
